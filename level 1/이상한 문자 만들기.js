@@ -10,3 +10,23 @@
 s "try hello world"
 return => "TrY HeLlO WoRlD"
 */
+
+function solution(s) {
+    var answer = '';
+    var temp = s.split("");
+    var index=0;
+    for(let i=0; i<temp.length; i++){
+        if(temp[i]==" "){
+            index=0
+        }else{
+            if(index%2==0){
+                temp[i]=temp[i].toUpperCase()
+            }else{
+                temp[i]=temp[i].toLowerCase()
+            }
+            index++
+        }
+    }
+
+    return temp.join("");
+}
