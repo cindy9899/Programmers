@@ -10,3 +10,15 @@ return => true
 arr 11
 return => false
 */
+
+function solution(x) {
+    var answer = true;
+    var stringNum = String(x);
+    var sum=0;
+    for(let i=0;i<stringNum.length;i++){
+        sum+=Number(stringNum[i]);
+    }
+    if(x%sum!=0)
+        answer=false;
+    return answer;
+}
