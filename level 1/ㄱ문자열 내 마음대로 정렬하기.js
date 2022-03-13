@@ -13,3 +13,15 @@ strings ["sun", "bed", "car"]
 n 1
 return => ["car", "bed", "sun"]
 */
+
+function solution(strings, n) {
+    
+    /*
+    sort() 함수 사용?
+    */
+    strings.sort(function (a,b){
+        return a[n]===b[n]? a.localeCompare(b):a[n].localeCompare(b[n])
+    })
+    
+    return strings;
+}
