@@ -14,4 +14,20 @@ participant ["mislav", "stanko", "mislav", "ana"]
 completion ["stanko", "ana", "mislav"]
 return => "mislav"
 */
-
+function solution(participant, completion) {
+    let list = {}
+    for(let i=0;i<completion.length;i++){
+        if(!list[completion[i]]) list[completion[i]] = 1
+        else list[completion[i]] += 1
+    }
+    
+    for(let i=0;i<participant.length;i++){
+        if(!list[participant[i]]) 
+            return participant[i]
+        else{
+            list[participant[i]] -= 1
+        }
+        
+    }
+    
+}
