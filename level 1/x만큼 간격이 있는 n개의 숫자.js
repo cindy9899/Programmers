@@ -10,3 +10,9 @@ n 5
 return => [2,4,6,8,10]
 */
 
+function solution(x, n) {
+    var answer = [];
+    for(let i=1;i<=n;i++)
+        answer.push(x*i);
+    return answer;
+}
