@@ -14,3 +14,12 @@ money 20
 count 4
 return => 10
 */
+
+function solution(price, money, count) {
+    var answer=(price*(count*count+count)/2)-money
+    if(answer>0){
+        return answer
+    }else{
+        return 0
+    }
+}
