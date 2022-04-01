@@ -17,3 +17,20 @@ answers [1,3,2,4,2]
 return => [1,2,3]
 */
 
+function solution(answers) {
+    var answer = [];
+    var stu1=[1,2,3,4,5]
+    var stu2=[2,1,2,3,2,4,2,5]
+    var stu3=[3,3,1,1,2,2,4,4,5,5]
+    var ans1=answers.filter(function(a,i){return a===stu1[i%stu1.length]}).length
+    var ans2=answers.filter(function(a,i){return a===stu2[i%stu2.length]}).length
+    var ans3=answers.filter(function(a,i){return a===stu3[i%stu3.length]}).length
+    
+    var maxscore=Math.max(ans1, ans2, ans3)
+    
+    if(ans1==maxscore) answer.push(1);
+    if(ans2==maxscore) answer.push(2);
+    if(ans3==maxscore) answer.push(3);
+    
+    return answer;
+}
