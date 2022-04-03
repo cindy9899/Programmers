@@ -22,3 +22,17 @@ new_id "...!@Bat#*..y.abcdefghijklm"
 return => "bat.y.abcdefghi"
 */
 
+function solution(new_id) {
+     var answer = new_id.toLowerCase()
+         .replace(/[^a-z0-9-_.]/gi, "") //특정 문자를 제외한 모드 문자 삭제
+         .replace(/[.]{2,}/gi, ".") //마침표 2개이상 삭제
+         .replace(/^\.|\.$/gi, "") //처음과 끝의 마침표 제외
+         .padEnd(1, "a") //문자열의 길이가 1보다 작다면 오른쪽에 a 대입
+         .slice(0, 15)
+         .replace(/\.$/gi, "")
+     
+     answer=answer.padEnd(3, answer[answer.length-1])
+     
+     return answer;
+ }
+ 
