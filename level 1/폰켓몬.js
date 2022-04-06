@@ -17,3 +17,20 @@ nums [3,3,3,2,2,4]
 result => 3
 */
 
+function solution(nums) {
+    var size=Math.floor(nums.length/2)
+    var list={}
+    for(let i=0; i<nums.length; i++){
+        if(!list[nums[i]]){
+            list[nums[i]]=1
+        }else{
+            list[nums[i]]+=1
+        }
+    }
+    if(Object.keys(list).length>size){
+        return size
+    }else{
+        return Object.keys(list).length
+    }
+
+}
