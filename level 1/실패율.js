@@ -17,3 +17,35 @@ stages [2, 1, 2, 6, 2, 4, 3, 3]
 return => [3, 4, 2, 1, 5]
 */
 
+function solution(N, stages) {
+    var answer = [];
+    var userDic={}
+    var tmpvalue=[]
+    for(let i=1; i<=N; i++){
+        userDic[i]=0
+    }
+    for(let i=0; i<stages.length; i++){
+        if(userDic.hasOwnProperty(stages[i])){
+           userDic[stages[i]]+=1 
+        }   
+    }
+    var allUser=stages.length;
+    for(let i=1; i<=N; i++){
+        let lastP=allUser-userDic[i]
+        tmpvalue.push(userDic[i]/(allUser==0?1:allUser))
+        userDic[i]=userDic[i]/(allUser==0?1:allUser)
+        allUser=lastP
+    }
+    tmpvalue=[...new Set(tmpvalue.sort(function(a,b){return b-a}))]
+    
+    userDic=Object.entries(userDic)
+    for(let i=0; i<tmpvalue.length; i++){
+        var tmparr=[]
+        var filtered=userDic.filter(([key, value])=>value==tmpvalue[i])
+        for(let i=0; i<filtered.length; i++){
+            tmparr.push(parseInt(filtered[i][0]))
+        }
+        answer=answer.concat(tmparr.sort(function(a,b){return a-b}))
+    }
+    return answer;
+}
