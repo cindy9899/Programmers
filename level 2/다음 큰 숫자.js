@@ -8,3 +8,15 @@ n 78 (1001110)
 return => 83 (1010011)
 */
 
+function solution(n) {
+    function one(number){
+        return number.toString(2).match(/1/g).filter(item=>item!=='').length;
+    }
+    var origin=one(n);
+    while(true){
+        n++
+        if(one(n)==origin){
+            return n
+        }
+    }
+}
