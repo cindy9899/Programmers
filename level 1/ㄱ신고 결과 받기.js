@@ -27,3 +27,24 @@
     return => [2,1,1,0]
 */
 
+function solution(id_list, report, k) {
+    var answer=new Array(id_list.length).fill(0) //신고결과 받는 횟수(default 0)
+    var userListDic={} //유저를 이름 대신에 index로 나타내기 위해 사용
+    var reportArr=Array.from(Array(id_list.length), ()=> new Array().fill(null))
+        //본인을 신고한 사람의 리스트 저장
+    
+    id_list.forEach(function(item, index){userListDic[item]=index})
+    report.map(user=>{
+        if(!reportArr[userListDic[user.split(" ")[1]]].includes(userListDic[user.split(" ")[0]]))
+            reportArr[userListDic[user.split(" ")[1]]].push(userListDic[user.split(" ")[0]])
+    })
+    reportArr.map(user=>{
+        if(user.length>=k){
+            user.map(reporter=>{
+                answer[reporter]++
+            })
+        }
+    })
+    
+    return answer;
+}
