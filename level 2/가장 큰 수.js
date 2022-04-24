@@ -11,3 +11,8 @@ numbers [3, 30, 34, 5, 9]
 return => "9534330"
 */
 
+function solution(numbers) {
+    let answer=numbers.map(num=>num+"").sort(function(a,b){return (a+b)-(b+a)}).reverse().join("")
+    return Number(answer)==0? "0" : answer
+}
+
