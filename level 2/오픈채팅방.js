@@ -30,3 +30,25 @@ result=>
  "Prodo님이 들어왔습니다."]
 */
 
+function solution(record) {
+    var answer = [];
+    var userIdDic={}
+    record.map(records=>{
+        if(records.split(" ")[0]!='Leave'){
+            let userId=records.split(" ")[1]
+            let userName=records.split(" ")[2]
+            userIdDic[userId]=userName
+        }
+    })
+    record.map(records=>{
+        switch(records.split(" ")[0]){
+            case 'Enter':
+                answer.push(userIdDic[records.split(" ")[1]]+"님이 들어왔습니다.")
+                break;
+            case 'Leave':
+                answer.push(userIdDic[records.split(" ")[1]]+"님이 나갔습니다.")
+                break;
+        }
+    })
+    return answer;
+}
