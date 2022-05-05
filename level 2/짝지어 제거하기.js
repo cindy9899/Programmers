@@ -15,3 +15,19 @@ s cdcd
 return => 0
 */
 
+function solution(s)
+{
+    var sstack=[];
+    var strtrue=true;
+    if(s.length%2!=0) return 0
+        for(let i=0; i<s.length; i++){
+            if(sstack[sstack.length-1]==s[i])
+                sstack.pop()
+            else
+                sstack.push(s[i])
+        }
+    if(sstack.length==0)
+        return 1
+    else
+        return 0
+}
