@@ -27,3 +27,38 @@
  return => "()(())()"
 */
 
+
+function solution(p) {
+   var answer = '';
+   var left=0;
+   var right=0;
+   let correct=false;
+   
+   if(!p) return ""
+   for(let i=0; i<p.length; i++){
+       if(p[i]=="(") left++;
+       if(p[i]==")") right++;
+       
+       if(left<right) correct=true;
+       if(left==right){ //분리할 시점
+           if(correct){ //올바른 괄호 X
+               answer+="("
+               answer+=solution(p.slice(i+1))
+               answer+=")"
+               
+               for(let j=1; j<i; j++){
+                   if(p[j]=="(") answer+=")"
+                   if(p[j]==")") answer+="("
+               }
+               return answer;
+           }
+           else{
+               answer+=p.slice(0, i+1)
+               answer+=solution(p.slice(i+1))
+               return answer;
+           }
+       }
+   }
+   
+   return answer;
+}
