@@ -22,3 +22,41 @@
    "AB" "Ab", "ab"는 같은 원소로 취급한다.
 */
 
+function solution(str1, str2) {
+   var answer = 0;
+   var checkEng=/[a-z]/;
+   var str1Arr=[]
+   var str2Arr=[]
+   str1=str1.toLowerCase()
+   str2=str2.toLowerCase()
+   for(let i=0; i<str1.length-1; i++){
+       if(checkEng.test(str1[i]) && checkEng.test(str1[i+1])){
+           let jaletter=str1[i]+str1[i+1]
+           str1Arr.push(jaletter)
+       }
+   }
+   for(let i=0; i<str2.length-1; i++){
+       if(checkEng.test(str2[i]) && checkEng.test(str2[i+1])){
+           let jaletter=str2[i]+str2[i+1]
+           str2Arr.push(jaletter)
+       }
+   }
+   var strSet=new Set([...str1Arr, ...str2Arr])
+   
+   var union=0;
+   var intersection=0;
+   strSet.forEach((setLetter)=>{
+       const tmp1=str1Arr.filter((e)=>e==setLetter).length;
+       const tmp2=str2Arr.filter((e)=>e==setLetter).length;
+       
+       union+=Math.max(tmp1, tmp2)
+       intersection+=Math.min(tmp1, tmp2)
+   })
+   if(union==0 && intersection==0){
+       answer=1
+   }else{
+       answer=intersection/union
+   }
+   
+   return Math.floor(answer*65536);
+}
