@@ -20,3 +20,27 @@ name "JEROEN"
 return => 56
 */
 
+function solution(name) {
+    var answer = 0;
+    var min=name.length-1;
+    for(let i=0; i<name.length; i++){
+        if(name.charCodeAt(i)<=78){
+            answer+=name.charCodeAt(i)-65
+        }else{
+            answer+=91-name.charCodeAt(i)
+        }
+    
+        var aEnd=i+1
+        while(name[aEnd]=="A"){
+            aEnd++
+        }
+    
+        min=Math.min(min, ((i)*2)+name.length-aEnd, (name.length-aEnd)*2+i)
+        //1. 처음부터 끝까지 진행
+        //2. 진행하다가 A를 만나서 앞으로 가는 진행
+        //3. 뒤쪽의 요소를 먼저 수정하고 name의 처음으로 넘어오는 진행
+    }
+    answer+=min
+    
+    return answer;
+}
