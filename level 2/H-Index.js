@@ -13,3 +13,14 @@ return => 3
 그리고 나머지 2편의 논문은 3회이하 인용되었기 떄문에 이 과학자의 H-index는 3입니다.
 */
 
+function solution(citations) {
+    var answer = 0;
+    citations.sort((a,b)=> b-a)
+    for(let i=0; i<citations.length; i++){
+        if(i<citations[i]){
+            answer++
+        }
+    }
+    
+    return answer;
+}
