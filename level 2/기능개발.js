@@ -17,3 +17,28 @@ speeds [1, 30, 5]
 return => [2, 1]
 */
 
+function solution(progresses, speeds) {
+   var arr=[]
+   var answer = [];
+   
+   for(let i=0; i<progresses.length; i++){
+       arr.push(Math.ceil((100-progresses[i])/speeds[i]))
+   }
+   let now=0;
+   let i=1;
+   let many=0;
+   while(i<=arr.length){
+       many++
+       if(arr[now]<arr[i]){
+           answer.push(many)
+           many=0
+           now=i
+           i=now+1
+       }else{
+           i++
+       }
+   }
+   answer.push(many)
+   
+   return answer;
+}
