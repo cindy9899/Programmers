@@ -26,3 +26,19 @@ s {{2}, {2, 1}, {2, 1, 3}, {2, 1, 3, 4}}
 return => [2, 1, 3, 4]
 */
 
+function solution(s) {
+    var answer = [];
+    s=s.substr(2, s.length-4).split("},{")
+    for(let i=0; i<s.length; i++){
+        s[i]=s[i].split(",")
+    }
+    //algorithm start
+    s.sort(function(a,b){return a.length-b.length})
+        .forEach((array)=>{
+        array.forEach((num)=>{
+            if(!answer.includes(Number(num)))
+                answer.push(Number(num))
+        })
+    })
+    return answer;
+}
