@@ -19,3 +19,18 @@ B 7
 return => 3
 */
 
+function solution(n,a,b)
+{
+    var answer = 0;
+    var [a,b]=[Math.min(a,b), Math.max(a,b)]
+    while(a!=b){
+        answer++;
+        a=parseInt((a-1)/2)+1
+        b=parseInt((b-1)/2)+1
+        /*
+        a=Math.ceil(a/2)
+        b=Math.ceil(b/2)
+        */
+    }
+    return answer;
+}
