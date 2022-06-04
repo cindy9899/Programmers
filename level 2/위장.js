@@ -18,3 +18,20 @@ clothes
 return => 5
 */
 
+function solution(clothes) {
+    var answer = 1;
+    var dic={}
+    for(let i=0; i<clothes.length; i++){
+        if(Object.keys(dic).includes(clothes[i][1]))
+            dic[clothes[i][1]]++
+        else{
+            dic[clothes[i][1]]=1
+        }
+    }
+    var tmparr=Object.values(dic)
+    for(let i=0; i<tmparr.length; i++){
+        answer*=tmparr[i]+1
+    }
+    
+    return answer-1;
+}
