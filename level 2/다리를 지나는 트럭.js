@@ -16,3 +16,22 @@ truck_weights [7, 4, 5, 6]
 return => 8
 */
 
+function solution(bridge_length, weight, truck_weights) {
+    var answer = 0;
+    var onBridge=[]
+    var onBridgeWeight=0;
+    while(truck_weights.length>0){
+        answer++;
+        if(onBridge.length==bridge_length){
+            onBridgeWeight=onBridgeWeight-onBridge.shift()
+        }
+        if(onBridgeWeight+truck_weights[0]>weight){
+            onBridge.push(0)
+            continue;
+        }
+        let nowTruck=truck_weights.shift()
+        onBridge.push(nowTruck)
+        onBridgeWeight+=nowTruck
+    }
+    return answer+bridge_length;
+}
