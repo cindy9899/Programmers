@@ -15,3 +15,24 @@ begin 1
 end 10
 return => [0,1,1,2,1,3,1,4,3,5]
 */
+
+function load(Num){
+    for(let i=2; i<=Math.sqrt(Num); i++){
+        if(Num%i==0 && Num/i <=10000000){
+            return Num/i;
+        }
+    }
+    return 1;
+}
+
+function solution(begin, end) {
+    var answer = [];
+    if(begin==1){
+        answer.push(0)
+        begin++
+    }
+    for(let i=begin; i<=end; i++){
+        answer.push(load(i))
+    }
+    return answer;
+}
